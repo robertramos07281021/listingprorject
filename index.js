@@ -20,6 +20,7 @@ require('dotenv').config()
 
 connectDB();
 
+app.set('trust proxy', 1);
 app.engine('ejs', ejsMate);
 
 app.set('views', path.join(__dirname, '/client/views'))
