@@ -20,7 +20,7 @@ const MemoryStore = require('memorystore')(session);
 require('dotenv').config()
 
 connectDB();
-mongoose.connect('mongodb://127.0.0.1:27017/newlisting', {useNewUrlParser: true, useUnifiedTopology: "true"})
+// mongoose.connect('mongodb://127.0.0.1:27017/newlisting', {useNewUrlParser: true, useUnifiedTopology: "true"})
 
 
 app.set('trust proxy', 1);
