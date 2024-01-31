@@ -16,6 +16,7 @@ const listingRouter = require('./server/routers/listingRouter')
 const usersRouter = require('./server/routers/usersRouter')
 const app = express();
 const connectDB = require('./config/dbConn')
+const MemoryStore = require('memorystore')(session);
 require('dotenv').config()
 
 connectDB();
@@ -33,14 +34,15 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(cors(corsOptions));
 
 const sessionConfig = {
-  secret: 'thisismysecret',
-  saveUninitialized: true,
-  resave: false,
   cookie: {
-    expires: Date.now() + 1000 * 60 * 60 * 24 * 7,
-    maxAge: 1000 * 60 * 60 * 24 * 7,
-    secure: true 
-  }
+    maxAge: 86400000
+  },
+  secret: 'thisismysecret',
+  store: new MemoryStore({
+    checkPeriod: 86400000
+  }),
+  saveUninitialized: true,
+  resave: false
 }
 app.use(session(sessionConfig));
 
