@@ -18,6 +18,7 @@ const app = express();
 const connectDB = require('./config/dbConn')
 const MemoryStore = require('memorystore')(session);
 require('dotenv').config()
+const PORT = process.env.PORT
 
 connectDB();
 // mongoose.connect('mongodb://127.0.0.1:27017/newlisting', {useNewUrlParser: true, useUnifiedTopology: "true"})
@@ -110,7 +111,7 @@ app.use((err, req, res, next) => {
 
 mongoose.connection.once('open', () => {
   console.log('Connected to MongoDB')
-  app.listen(process.env.PORT, () => console.log(`Server running on port ${process.env.PORT}`))
+  app.listen(PORT, () => console.log(`Server running on port ${PORT}`))
 })
 
 mongoose.connection.on('error', err => {
