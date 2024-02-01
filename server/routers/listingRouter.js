@@ -8,8 +8,8 @@ const {IsLoggedIn, isAuthor, validateListing, validateReview, isReviewAuthor } =
 
 
 //listing routers
+router.get('', listingController.homepage);
 router.get('/listings', listingController.allListings);
-router.get('/', listingController.homepage);
 router.get('/listings/new-listing-form',IsLoggedIn, listingController.newListing);
 router.post('/listings',validateListing, IsLoggedIn, listingController.saveListing);
 router.get('/listings/:id', listingController.showListing);
