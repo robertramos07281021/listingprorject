@@ -15,11 +15,11 @@ const mongoose = require('mongoose')
 const listingRouter = require('./server/routers/listingRouter')
 const usersRouter = require('./server/routers/usersRouter')
 const app = express();
-// const connectDB = require('./config/dbConn')
+const connectDB = require('./config/dbConn')
 const MemoryStore = require('memorystore')(session);
 require('dotenv').config()
 
-// connectDB();
+connectDB();
 // mongoose.connect('mongodb://127.0.0.1:27017/newlisting', {useNewUrlParser: true, useUnifiedTopology: "true"})
 
 
@@ -46,6 +46,7 @@ const sessionConfig = {
   saveUninitialized: true,
   resave: false
 }
+
 app.use(session(sessionConfig));
 
 app.use(flash());
@@ -97,22 +98,22 @@ app.use((err, req, res, next) => {
 // })
 
 
-mongoose.connect(process.env.MONGO_URI)
-    .then(()=> {
-        app.listen(process.env.PORT, () => {
-            console.log('connected to DB and listening on port', process.env.PORT);
-        })
-    })
-    .catch(err => {
-        console.log(err)
-    })
+// mongoose.connect(process.env.MONGO_URI)
+//     .then(()=> {
+//         app.listen(process.env.PORT, () => {
+//             console.log('connected to DB and listening on port', process.env.PORT);
+//         })
+//     })
+//     .catch(err => {
+//         console.log(err)
+//     })
 
-// mongoose.connection.once('open', () => {
-//   console.log('Connected to MongoDB')
-//   app.listen(PORT, () => console.log(`Server running on port ${PORT}`))
-// })
+mongoose.connection.once('open', () => {
+  console.log('Connected to MongoDB')
+  app.listen(PORT, () => console.log(`Server running on port ${PORT}`))
+})
 
-// mongoose.connection.on('error', err => {
-//   console.log(err)
-//   // logEvents(`${err.no}: ${err.code}\t${err.syscall}\t${err.hostname}`, 'mongoErrLog.log')
-// })
+mongoose.connection.on('error', err => {
+  console.log(err)
+  // logEvents(`${err.no}: ${err.code}\t${err.syscall}\t${err.hostname}`, 'mongoErrLog.log')
+})
