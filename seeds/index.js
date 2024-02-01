@@ -3,13 +3,13 @@ const Listing = require('../models/listing')
 const cities = require('./cities')
 const {descriptors, places} = require('./seedHelpers')
 
-mongoose.connect('mongodb://127.0.0.1:27017/newlisting')
-  .then(()=> {
-    console.log('Connection open')
-  })
-  .catch(err => {
-    console.log(`Error:${err}`)
-  })
+// mongoose.connect('mongodb://127.0.0.1:27017/newlisting')
+//   .then(()=> {
+//     console.log('Connection open')
+//   })
+//   .catch(err => {
+//     console.log(`Error:${err}`)
+//   })
 
   const randomNameNum = (array) => array[Math.floor(Math.random() * array.length)];
 const seedDB = async() => {
