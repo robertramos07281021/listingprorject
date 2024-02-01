@@ -1,4 +1,4 @@
-const PORT = process.env.PORT || 8000
+
 const express = require('express');
 const methodOverride = require('method-override');
 const ejsMate = require('ejs-mate');
