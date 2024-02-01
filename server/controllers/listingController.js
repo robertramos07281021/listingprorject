@@ -20,6 +20,11 @@ exports.allListings = catchAsync(async(req, res) => {
   res.status(200).render('listings/index',{listings})
 })
 
+exports.homepage = catchAsync(async(req, res) => {
+  const listings = await Listing.find();
+  res.status(200).render('listings/index',{listings})
+})
+
 exports.showListing = catchAsync(async(req, res) => {
 
   const {id} = req.params;
