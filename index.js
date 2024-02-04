@@ -9,7 +9,7 @@ const passport = require('passport')
 const LocalStrategy = require('passport-local')
 const User = require('./models/user')
 const cors = require('cors')
-const corsOptions = require('./config/corsOptions')
+// const corsOptions = require('./config/corsOptions')
 const path = require('path');
 const mongoose = require('mongoose')
 const listingRouter = require('./server/routers/listingRouter')
@@ -35,7 +35,8 @@ app.use(express.urlencoded({extended: true}))
 
 app.use(methodOverride('_method'));
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(cors(corsOptions));
+// app.use(cors(corsOptions));
+app.use(cors());
 
 const sessionConfig = {
   cookie: {
