@@ -1,15 +1,20 @@
-const allowedOrigins = require('./allowedOrigins')
+
+const allowedOrigins = [
+  'http://localhost:5000',
+  'http://listingproject.onrender.com'
+  
+]
 
 const corsOptions = {
   origin: (origin, callback) => {
-    if(allowedOrigins.indexOf(origin) !== -1 || !origin) {
+    if(allowedOrigins.indexOf(origin) !== -1) {
       callback(null, true)
     } else {
       callback(new Error('Not allowed by CORS'))
     }
-  },
-  credentials: true,
-  optionsSuccessStatus: 200
+  }
+  // credentials: true,
+  // optionsSuccessStatus: 200
 
 }
 
