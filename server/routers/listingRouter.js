@@ -9,7 +9,7 @@ const {IsLoggedIn, isAuthor, validateListing, validateReview, isReviewAuthor } =
 
 
 //listing routers
-router.get('', listingController.homepage);
+router.get('', cors(cortsOptions),listingController.homepage);
 router.get('/listings',cors(cortsOptions), listingController.allListings);
 router.get('/listings/new-listing-form',IsLoggedIn, cors(cortsOptions),listingController.newListing);
 router.post('/listings',validateListing, IsLoggedIn, cors(cortsOptions),listingController.saveListing);
