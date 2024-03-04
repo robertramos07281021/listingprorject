@@ -3,13 +3,16 @@ const Listing = require('../models/listing')
 const cities = require('./cities')
 const {descriptors, places} = require('./seedHelpers')
 
-// mongoose.connect('mongodb://127.0.0.1:27017/newlisting')
-//   .then(()=> {
-//     console.log('Connection open')
-//   })
-//   .catch(err => {
-//     console.log(`Error:${err}`)
-//   })
+
+require('dotenv').config()
+
+mongoose.connect(process.env.MONGO_URI)
+    .then(() => {
+        console.log("Success fully added");
+    })
+    .catch(err => {
+        console.log("Error: ", err)
+    })
 
   const randomNameNum = (array) => array[Math.floor(Math.random() * array.length)];
 const seedDB = async() => {
@@ -30,6 +33,7 @@ const seedDB = async() => {
     await listing.save();
   }
 }
+
 
 seedDB().then( () => {
   mongoose.connection.close();
