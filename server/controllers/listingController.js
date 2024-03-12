@@ -26,9 +26,7 @@ exports.homepage = catchAsync(async(req, res) => {
 })
 
 exports.showListing = catchAsync(async(req, res) => {
-
   const {id} = req.params;
-
   const listing = await Listing.findById(id).populate({
     path: 'reviews',
     populate: {
@@ -42,10 +40,14 @@ exports.showListing = catchAsync(async(req, res) => {
   res.status(200).render('listings/show', {listing});
 })
 
+
+
+
+
 exports.newListing = (req, res) => {
-  
   res.status(200).render('listings/new');
 }
+
 
 
 exports.saveListing = catchAsync(async(req, res) => {

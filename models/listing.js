@@ -12,7 +12,7 @@ const ListingSchema = new Schema({
   description: String,
   location: String,
   author: {
-    type: Schema.Types.ObjectId,
+    type: mongoose.Schema.Types.ObjectId,
     ref: 'User'
   },
   reviews: [
