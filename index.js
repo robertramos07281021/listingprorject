@@ -84,8 +84,6 @@ app.use('', listingRouter);
 app.use('', usersRouter);
 
 
-
-
 app.use('*', (req, res, next) => {
   next(new ExpressError('Page not Found', 404));
 })

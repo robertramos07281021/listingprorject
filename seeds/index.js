@@ -33,7 +33,6 @@ const seedDB = async() => {
 
     })
     await listing.save();
-    console.log(listing)
   }
  
 }
